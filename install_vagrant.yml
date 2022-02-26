@@ -1,0 +1,14 @@
+---
+
+- hosts: vagrant
+  become: yes
+  tasks:
+    - name: "Update yum"
+      yum:
+        update_cache: yes
+    - name: "Install yum-utils and epel-release"
+      yum:
+        name:
+          - "yum-utils"
+          - "epel-release"
+        state: latest
