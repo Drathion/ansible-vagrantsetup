@@ -12,3 +12,13 @@
           - "yum-utils"
           - "epel-release"
         state: latest
+    - name: "Add repositories for installation"
+      yum_repository:
+        name: virtualbox
+        description: "virtualbox repo"
+        baseurl: https://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+    - name: "Add Hashicorp Repo"
+      yum_repository:
+        name: hashicorp
+        description: "hashicorp repo"
+        baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
