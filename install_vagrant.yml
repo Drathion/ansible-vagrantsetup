@@ -45,4 +45,4 @@
         dest: /files
     - name: "Install VirtualBox extension pack"
       shell:
-        cmd: "echo 'y' | VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack"
+        cmd: "echo 'y' | /files/VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack"
