@@ -42,7 +42,10 @@
       uri:
         method: GET
         url: https://download.virtualbox.org/virtualbox/6.1.32/Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack
-        dest: /files
+        creates: /files/Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack
     - name: "Install VirtualBox extension pack"
       shell:
-        cmd: "echo 'y' | /files/VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack"
+        cmd: "echo 'y' | VBoxManage extpack install /files/Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack"
+    - name: "Reload VirtualBox"
+      shell:
+        cmd: "/sbin/vboxconfig"
