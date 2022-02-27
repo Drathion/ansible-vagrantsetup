@@ -2,6 +2,16 @@
 
 - hosts: vagrant
   become: yes
+  vars:
+    packages:
+      - gcc 
+      - make 
+      - perl 
+      - kernel-devel 
+      - kernel-devel-4.18.0-348.el8.0.2.x86_64
+      - elfutils-libelf-devel 
+      - vagrant 
+      - VirtualBox-6.1
   tasks:
     - name: "Update yum"
       yum:
@@ -12,11 +22,14 @@
           - "yum-utils"
           - "epel-release"
         state: latest
-    - name: "Add repositories for installation"
+    - name: "Add VirtualBox repo"
       get_url:
         url: https://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
-        dest: /etx/yum.repos.d/virtualbox.repo
+        dest: /etc/yum.repos.d/virtualbox.repo
     - name: "Add Hashicorp Repo"
       get_url:
         url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
         dest: /etc/yum.repos.d/hashicorp.repo
+    - name: "install packages"
+      yum:
+        name: {{ packages }}
