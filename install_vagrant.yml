@@ -34,3 +34,8 @@
       yum:
         with_items: "{{ packages }}"
         state: latest
+    - name: "Download VirtualBox extensions"
+      uri:
+        method: GET
+        url: https://download.virtualbox.org/virtualbox/6.1.32/Oracle_VM_VirtualBox_Extension_Pack-6.1.32-149290.vbox-extpack
+        
